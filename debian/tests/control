@@ -1,0 +1,2 @@
+Tests: cmake
+Depends: @, cmake, g++ | c++-compiler

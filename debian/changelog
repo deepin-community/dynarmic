@@ -1,5 +1,160 @@
-template-repository (1.0-1) unstable; urgency=medium
+dynarmic (6.5.0+ds-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream version 6.5.0+ds
+    - Closes: #1041270
+  * d/control: libdynarmic6 -> libdynarmic6.5
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Fri, 21 Jul 2023 11:44:38 +0200
+
+dynarmic (6.4.8+ds-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 05 Jul 2023 22:03:58 +0200
+
+dynarmic (6.4.8+ds-1) experimental; urgency=medium
+
+  * New upstream version 6.4.8+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Tue, 30 May 2023 16:53:10 +0200
+
+dynarmic (6.4.7+ds-1) experimental; urgency=medium
+
+  * New upstream version 6.4.7+ds
+  * d/patches: update catch2 patch
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Mon, 22 May 2023 01:11:01 +0200
+
+dynarmic (6.4.5+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.4.5+ds
+  * d/control: add boost and llvm to -dev dependencies
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Mon, 06 Feb 2023 00:14:51 +0100
+
+dynarmic (6.4.4+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.4.4+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Mon, 16 Jan 2023 23:30:37 +0100
+
+dynarmic (6.4.3+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.4.3+ds
+  * d/rules: enable LLVM backend
+  * d/patches: revert Catch2 v3 switch.
+    Catch2 version 3 won't be available in Debian for a while.
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sat, 07 Jan 2023 12:49:07 +0100
+
+dynarmic (6.4.0+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.4.0+ds
+  * d/control: b-depend on libzydis-dev only on amd64
+  * d/rules: enable A64 frontend on arm64
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sun, 04 Dec 2022 15:31:27 +0100
+
+dynarmic (6.3.1+ds-2) unstable; urgency=medium
+
+  * d/control: depend on Zydis 4.0.0 or newer
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Thu, 24 Nov 2022 11:21:59 +0100
+
+dynarmic (6.3.1+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.3.1+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 23 Nov 2022 22:09:18 +0100
+
+dynarmic (6.3.0+ds-2) unstable; urgency=medium
+
+  * d/rules: fix arm64 build
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Tue, 22 Nov 2022 09:48:48 +0100
+
+dynarmic (6.3.0+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.3.0+ds
+  * d/control: build on arm64
+  * d/copyright: remove vixl from Files-Excluded
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sun, 20 Nov 2022 01:38:12 +0100
+
+dynarmic (6.2.3+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.2.3+ds
+    - fmtlib 9.0.0 is now supported. Closes: #1014674
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Thu, 28 Jul 2022 12:50:19 +0200
+
+dynarmic (6.2.1+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.2.1+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sat, 23 Jul 2022 17:08:36 +0200
+
+dynarmic (6.0.0+ds-1) unstable; urgency=medium
+
+  * New upstream version 6.0.0+ds
+  * d/watch: track stable releases
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 22 Jun 2022 16:19:53 +0200
+
+dynarmic (5.204.g57af72a5+ds-1) unstable; urgency=medium
+
+  * New upstream version 5.204.g57af72a5+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Tue, 19 Apr 2022 23:06:39 +0200
+
+dynarmic (5.196.g27bbf450+ds-1) unstable; urgency=medium
+
+  * New upstream version 5.196.g27bbf450+ds
+  * d/rules: use CMake LTO instead of dpkg-buildflags'
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Mon, 18 Apr 2022 20:11:00 +0200
+
+dynarmic (5.187.g9cadab8f+ds-1) unstable; urgency=medium
+
+  * New upstream version 5.187.g9cadab8f+ds
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 30 Mar 2022 21:39:23 +0200
+
+dynarmic (5.163.ge4b669fd+ds-1) unstable; urgency=medium
+
+  [ Bastian Germann ]
+  * Move Vcs-* fields to debian namespace
+
+  [ Andrea Pappacoda ]
+  * New upstream version 5.163.ge4b669fd+ds
+  * d/patches: remove upstreamed patches
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sun, 13 Mar 2022 22:11:31 +0100
+
+dynarmic (5.150.gea08a389+ds-1) unstable; urgency=medium
+
+  * New upstream version 5.150.gea08a389+ds
+  * d/tests: add autopkgtests
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Thu, 24 Feb 2022 13:42:50 +0100
+
+dynarmic (5.135.g0cafcc1a+ds-1) unstable; urgency=medium
+
+  * New upstream version 5.135.g0cafcc1a. Closes: #1003468
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Wed, 12 Jan 2022 22:27:23 +0100
+
+dynarmic (5.132.gad5465d6+ds-1) unstable; urgency=medium
+
+  * New upstream release.
+  * d/control: depend on xbyak also on x32
+  * d/control: add Vcs fields
+  * d/watch: follow upstream master branch
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Mon, 03 Jan 2022 18:24:43 +0100
+
+dynarmic (5.128.g4dcebc18+ds-1) unstable; urgency=low
+
+  * Initial release. Closes: #995917
+
+ -- Andrea Pappacoda <andrea@pappacoda.it>  Sun, 14 Nov 2021 12:35:09 +0100

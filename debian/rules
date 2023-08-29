@@ -1,4 +1,26 @@
 #!/usr/bin/make -f
 
+# optimize=+all,-lto because I use CMake's LTO support
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all optimize=+all,-lto qa=+all
+# Added by qa=bug, triggers some false positives in xbyak
+export DEB_CXXFLAGS_MAINT_STRIP = -Werror=array-bounds
+
 %:
 	dh $@
+
+ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+  test := true
+else
+  test := false
+endif
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DBUILD_SHARED_LIBS=true \
+		-DCMAKE_INTERPROCEDURAL_OPTIMIZATION=true \
+		-DCMAKE_POLICY_DEFAULT_CMP0069=NEW \
+		-DDYNARMIC_IGNORE_ASSERTS=true \
+		-DDYNARMIC_TESTS=$(test) \
+		-DDYNARMIC_TESTS_USE_UNICORN=false \
+		-DDYNARMIC_USE_LLVM=true \
+		-DDYNARMIC_USE_PRECOMPILED_HEADERS=false

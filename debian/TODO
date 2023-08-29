@@ -1,0 +1,3 @@
+Consider if splitting Merry's own libraries is worth the effort.
+- libmcl - Merry's common library - probably not worth it, at least for now
+- oaknut - Yet another AArch64 emitter - 1.0.0 has already been tagged, might be doable, but is header-only
