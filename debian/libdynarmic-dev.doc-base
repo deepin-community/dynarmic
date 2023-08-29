@@ -1,0 +1,8 @@
+Document: libdynarmic-dev
+Title: Dynarmic documentation
+Author: MerryMage
+Section: Programming/C++
+
+Format: Text
+Index: /usr/share/doc/libdynarmic-dev/Design.md.gz
+Files: /usr/share/doc/libdynarmic-dev/*.md*
