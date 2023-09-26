@@ -1,0 +1,291 @@
+Description: Revert Catch2 v3 switch
+ Debian won't be packaging Catch2 version 3 for the time being,
+ according to
+ <https://salsa.debian.org/debian/catch2/-/commit/73c03e2f9d8be0959cc097366ac1241773fe20da>.
+ I think that's a shame, but whatever.
+Author: Andrea Pappacoda <andrea@pappacoda.it>
+Forwarded: not-needed
+Last-Update: 2023-05-21
+
+--- dynarmic-6.4.7+ds.orig/CMakeLists.txt
++++ dynarmic-6.4.7+ds/CMakeLists.txt
+@@ -145,7 +145,7 @@ if (DYNARMIC_USE_LLVM)
+ endif()
+ 
+ if (DYNARMIC_TESTS)
+-    find_package(Catch2 3 QUIET)
++    find_package(Catch2 2 QUIET)
+     if (DYNARMIC_TESTS_USE_UNICORN)
+         find_package(Unicorn REQUIRED)
+     endif()
+--- dynarmic-6.4.7+ds.orig/tests/A32/fuzz_arm.cpp
++++ dynarmic-6.4.7+ds/tests/A32/fuzz_arm.cpp
+@@ -11,7 +11,7 @@
+ #include <type_traits>
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/bit/bit_count.hpp>
+ #include <mcl/bit/swap.hpp>
+ #include <mcl/scope_exit.hpp>
+--- dynarmic-6.4.7+ds.orig/tests/A32/fuzz_thumb.cpp
++++ dynarmic-6.4.7+ds/tests/A32/fuzz_thumb.cpp
+@@ -12,7 +12,7 @@
+ #include <string_view>
+ #include <tuple>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/bit/bit_field.hpp>
+ #include <mcl/stdint.hpp>
+ 
+--- dynarmic-6.4.7+ds.orig/tests/A32/test_arm_disassembler.cpp
++++ dynarmic-6.4.7+ds/tests/A32/test_arm_disassembler.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "dynarmic/frontend/A32/disassembler/disassembler.h"
+ 
+--- dynarmic-6.4.7+ds.orig/tests/A32/test_arm_instructions.cpp
++++ dynarmic-6.4.7+ds/tests/A32/test_arm_instructions.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ #include "dynarmic/frontend/A32/a32_location_descriptor.h"
+--- dynarmic-6.4.7+ds.orig/tests/A32/test_coprocessor.cpp
++++ dynarmic-6.4.7+ds/tests/A32/test_coprocessor.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include <memory>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ #include "dynarmic/frontend/A32/a32_location_descriptor.h"
+--- dynarmic-6.4.7+ds.orig/tests/A32/test_svc.cpp
++++ dynarmic-6.4.7+ds/tests/A32/test_svc.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include <optional>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ 
+--- dynarmic-6.4.7+ds.orig/tests/A32/test_thumb_instructions.cpp
++++ dynarmic-6.4.7+ds/tests/A32/test_thumb_instructions.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ 
+ #include "./testenv.h"
+--- dynarmic-6.4.7+ds.orig/tests/A64/a64.cpp
++++ dynarmic-6.4.7+ds/tests/A64/a64.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ #include "dynarmic/common/fp/fpsr.h"
+--- dynarmic-6.4.7+ds.orig/tests/A64/fibonacci.cpp
++++ dynarmic-6.4.7+ds/tests/A64/fibonacci.cpp
+@@ -7,7 +7,7 @@
+ #include <exception>
+ #include <map>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ #include <oaknut/oaknut.hpp>
+ 
+--- dynarmic-6.4.7+ds.orig/tests/A64/fp_min_max.cpp
++++ dynarmic-6.4.7+ds/tests/A64/fp_min_max.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ 
+ #include "./testenv.h"
+--- dynarmic-6.4.7+ds.orig/tests/A64/fuzz_with_unicorn.cpp
++++ dynarmic-6.4.7+ds/tests/A64/fuzz_with_unicorn.cpp
+@@ -8,7 +8,7 @@
+ #include <string>
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/scope_exit.hpp>
+ #include <mcl/stdint.hpp>
+ 
+--- dynarmic-6.4.7+ds.orig/tests/A64/misaligned_page_table.cpp
++++ dynarmic-6.4.7+ds/tests/A64/misaligned_page_table.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ #include "dynarmic/interface/A64/a64.h"
+--- dynarmic-6.4.7+ds.orig/tests/A64/test_invalidation.cpp
++++ dynarmic-6.4.7+ds/tests/A64/test_invalidation.cpp
+@@ -3,7 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "./testenv.h"
+ #include "dynarmic/interface/A64/a64.h"
+--- dynarmic-6.4.7+ds.orig/tests/A64/verify_unicorn.cpp
++++ dynarmic-6.4.7+ds/tests/A64/verify_unicorn.cpp
+@@ -5,7 +5,7 @@
+ 
+ #include <array>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ 
+ #include "../rand_int.h"
+ #include "../unicorn_emu/a64_unicorn.h"
+--- dynarmic-6.4.7+ds.orig/tests/CMakeLists.txt
++++ dynarmic-6.4.7+ds/tests/CMakeLists.txt
+@@ -5,6 +5,7 @@ add_executable(dynarmic_tests
+     fp/FPValue.cpp
+     fp/mantissa_util_tests.cpp
+     fp/unpacked_tests.cpp
++    main.cpp
+     rand_int.h
+ )
+ 
+@@ -84,7 +85,7 @@ if (("A32" IN_LIST DYNARMIC_FRONTENDS) A
+ 
+     create_target_directory_groups(dynarmic_print_info)
+ 
+-    target_link_libraries(dynarmic_print_info PRIVATE dynarmic Boost::boost fmt::fmt merry::mcl)
++    target_link_libraries(dynarmic_print_info PRIVATE dynarmic Boost::boost Catch2::Catch2 fmt::fmt merry::mcl)
+     target_include_directories(dynarmic_print_info PRIVATE . ../src)
+     target_compile_options(dynarmic_print_info PRIVATE ${DYNARMIC_CXX_FLAGS})
+     target_compile_definitions(dynarmic_print_info PRIVATE FMT_USE_USER_DEFINED_LITERALS=1)
+@@ -99,7 +100,7 @@ if (("A32" IN_LIST DYNARMIC_FRONTENDS) A
+ 
+     create_target_directory_groups(dynarmic_test_generator)
+ 
+-    target_link_libraries(dynarmic_test_generator PRIVATE dynarmic Boost::boost fmt::fmt merry::mcl)
++    target_link_libraries(dynarmic_test_generator PRIVATE dynarmic Boost::boost Catch2::Catch2 fmt::fmt merry::mcl)
+     target_include_directories(dynarmic_test_generator PRIVATE . ../src)
+     target_compile_options(dynarmic_test_generator PRIVATE ${DYNARMIC_CXX_FLAGS})
+     target_compile_definitions(dynarmic_test_generator PRIVATE FMT_USE_USER_DEFINED_LITERALS=1)
+@@ -120,9 +121,9 @@ endif()
+ 
+ create_target_directory_groups(dynarmic_tests)
+ 
+-target_link_libraries(dynarmic_tests PRIVATE dynarmic Boost::boost Catch2::Catch2WithMain fmt::fmt merry::mcl)
++target_link_libraries(dynarmic_tests PRIVATE dynarmic Boost::boost Catch2::Catch2 fmt::fmt merry::mcl)
+ target_include_directories(dynarmic_tests PRIVATE . ../src)
+ target_compile_options(dynarmic_tests PRIVATE ${DYNARMIC_CXX_FLAGS})
+-target_compile_definitions(dynarmic_tests PRIVATE FMT_USE_USER_DEFINED_LITERALS=1)
++target_compile_definitions(dynarmic_tests PRIVATE FMT_USE_USER_DEFINED_LITERALS=1 CATCH_CONFIG_ENABLE_BENCHMARKING=1)
+ 
+ add_test(dynarmic_tests dynarmic_tests --durations yes)
+--- dynarmic-6.4.7+ds.orig/tests/decoder_tests.cpp
++++ dynarmic-6.4.7+ds/tests/decoder_tests.cpp
+@@ -7,7 +7,7 @@
+ #include <iomanip>
+ #include <iostream>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/assert.hpp>
+ 
+ #include "dynarmic/frontend/A32/decoder/asimd.h"
+--- dynarmic-6.4.7+ds.orig/tests/fp/FPToFixed.cpp
++++ dynarmic-6.4.7+ds/tests/fp/FPToFixed.cpp
+@@ -6,7 +6,7 @@
+ #include <tuple>
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ 
+ #include "../rand_int.h"
+--- dynarmic-6.4.7+ds.orig/tests/fp/mantissa_util_tests.cpp
++++ dynarmic-6.4.7+ds/tests/fp/mantissa_util_tests.cpp
+@@ -6,7 +6,7 @@
+ #include <tuple>
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ 
+ #include "../rand_int.h"
+--- dynarmic-6.4.7+ds.orig/tests/fp/unpacked_tests.cpp
++++ dynarmic-6.4.7+ds/tests/fp/unpacked_tests.cpp
+@@ -6,7 +6,7 @@
+ #include <tuple>
+ #include <vector>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <mcl/stdint.hpp>
+ 
+ #include "../rand_int.h"
+--- /dev/null
++++ dynarmic-6.4.7+ds/tests/main.cpp
+@@ -0,0 +1,7 @@
++/* This file is part of the dynarmic project.
++ * Copyright (c) 2016 MerryMage
++ * SPDX-License-Identifier: 0BSD
++ */
++
++#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
++#include <catch2/catch.hpp>
+--- dynarmic-6.4.7+ds.orig/tests/rsqrt_test.cpp
++++ dynarmic-6.4.7+ds/tests/rsqrt_test.cpp
+@@ -3,8 +3,7 @@
+  * SPDX-License-Identifier: 0BSD
+  */
+ 
+-#include <catch2/benchmark/catch_benchmark.hpp>
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <fmt/printf.h>
+ #include <mcl/stdint.hpp>
+ 
+--- dynarmic-6.4.7+ds.orig/tests/x64_cpu_info.cpp
++++ dynarmic-6.4.7+ds/tests/x64_cpu_info.cpp
+@@ -10,7 +10,7 @@
+ #include <cstring>
+ #include <utility>
+ 
+-#include <catch2/catch_test_macros.hpp>
++#include <catch2/catch.hpp>
+ #include <xbyak/xbyak_util.h>
+ 
+ TEST_CASE("Host CPU supports", "[a64]") {
